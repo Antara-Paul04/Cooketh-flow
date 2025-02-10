@@ -23,7 +23,7 @@ class DashboardDrawer extends StatelessWidget {
                 duration: Duration(milliseconds: 400),
                 curve: Curves.easeInOut,
                 width: 250,
-                height: provider.isOpen ? 630 : 81,
+                height:630,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -34,73 +34,38 @@ class DashboardDrawer extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 16),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: provider.isOpen && provider.isEditing
-                                ? TextField(
-                                    controller: provider.controller,
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.zero,
-                                    ),
-                                    style: TextStyle(
-                                      fontFamily: 'Frederik',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    autofocus: true,
-                                  )
-                                : GestureDetector(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 9),
-                                      child: Text(
-                                        provider.getTruncatedTitle(),
-                                        style: TextStyle(
-                                          fontFamily: 'Frederik',
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ),
-                          ),
-                          SizedBox(width: 12),
-                          GestureDetector(
-                            onTap: provider.toggleDrawer,
-                            child: Icon(
-                              provider.isOpen
-                                  ? PhosphorIconsRegular.sidebarSimple
-                                  : PhosphorIconsFill.sidebarSimple,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (provider.isOpen)
-                      Expanded(
-                        child: ListView(
-                          physics: AlwaysScrollableScrollPhysics(),
+                        child: Column(
                           children: [
-                            ListTile(title: Text('Option 1')),
-                            ListTile(title: Text('Option 2')),
-                            ListTile(title: Text('Option 3')),
+                            Text('Drawer'),
+                            ListTile(
+                              title: Row(
+                                children: [
+                                  Icon(PhosphorIconsRegular.star, size: 22,),
+                                  SizedBox(width: 8),
+                                  Text('Starred Projects'),
+                                ],
+                              ),
+                            ),
+                            ListTile(
+                              title: Row(
+                                children: [
+                                  Icon(PhosphorIconsRegular.gearSix, size: 22,),
+                                  SizedBox(width: 8),
+                                  Text('Settings'),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-      },
-    );
-  }
-}
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
+            }

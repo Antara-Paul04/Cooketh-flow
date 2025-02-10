@@ -1,4 +1,5 @@
 import 'package:cookethflow/core/widgets/drawers/dashboard_drawer.dart';
+import 'package:cookethflow/providers/dashboard_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +8,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
+    return Consumer<DashboardProvider>(
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
